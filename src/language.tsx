@@ -15,6 +15,21 @@ type LanguageContextType = {
 
 export const languageConfig: Readonly<LanguageConfig> = {
     zh_CN: {
+        banner: {
+            button: "横幅",
+            title: "导出横幅",
+            close: "关闭",
+            download: "下载 PNG（{width} × {height}）",
+            size: "尺寸",
+            custom: "自定义尺寸",
+            background: "背景",
+            padding: "安全区内边距：{value}%",
+            useCurrentView: "使用当前相机视角",
+            showSafeArea: "显示安全区（不会导出）",
+            previewAlt: "横幅预览",
+            hint: "文字会自动缩放到安全区内。先在场景中调整文字和角度，再回到这里导出。",
+            empty: "场景中没有文字，无法导出横幅",
+        },
         zh_CN: "中文",
         en_US: "English",
         ja_JP: "日本語",
@@ -158,6 +173,21 @@ export const languageConfig: Readonly<LanguageConfig> = {
         readProjectFileFailed: "读取文件失败"
     },
     en_US: {
+        banner: {
+            button: "Banner",
+            title: "Export banner",
+            close: "Close",
+            download: "Download PNG ({width} × {height})",
+            size: "Size",
+            custom: "Custom size",
+            background: "Background",
+            padding: "Padding inside safe area: {value}%",
+            useCurrentView: "Use current camera angle",
+            showSafeArea: "Show safe area (not exported)",
+            previewAlt: "Banner preview",
+            hint: "The text is scaled to fit the safe area automatically. Adjust the text and camera angle in the scene, then come back here to export.",
+            empty: "There is no text in the scene to export",
+        },
         zh_CN: "中文",
         en_US: "English",
         ja_JP: "日本語",
@@ -301,6 +331,21 @@ export const languageConfig: Readonly<LanguageConfig> = {
         readProjectFileFailed: "Failed to read file"
     },
     ja_JP: {
+        banner: {
+            button: "バナー",
+            title: "バナーを書き出す",
+            close: "閉じる",
+            download: "PNG をダウンロード（{width} × {height}）",
+            size: "サイズ",
+            custom: "カスタムサイズ",
+            background: "背景",
+            padding: "セーフエリア内の余白：{value}%",
+            useCurrentView: "現在のカメラアングルを使う",
+            showSafeArea: "セーフエリアを表示（書き出されません）",
+            previewAlt: "バナーのプレビュー",
+            hint: "テキストはセーフエリアに収まるよう自動で拡大縮小されます。シーンで文字と角度を調整してから書き出してください。",
+            empty: "シーンにテキストがないため書き出せません",
+        },
         zh_CN: "中文",
         en_US: "English",
         ja_JP: "日本語",

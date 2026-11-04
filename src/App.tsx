@@ -32,10 +32,12 @@ import {
     MoonOutlined,
     SunOutlined,
     RobotOutlined,
-    CopyOutlined
+    CopyOutlined,
+    PictureOutlined
 } from "@ant-design/icons";
 import { HappyProvider } from '@ant-design/happy-work-theme';
 import ThreeCanvas, { ThreeCanvasHandle } from "./components/ThreeCanvas";
+import BannerExportModal from "./components/BannerExportModal";
 import "antd/dist/reset.css";
 import { CameraOptions, Text3DData, WorkspaceData } from "./types/text";
 import TextSettingsPanel from "./components/TextSettingsPanel.tsx";
@@ -171,6 +173,7 @@ const AppContent: React.FC<AppContentProps> = ({ themeMode, onThemeToggle }) => 
     );
 
     const threeCanvasRef = useRef<ThreeCanvasHandle>(null);
+    const [bannerOpen, setBannerOpen] = useState(false);
 
     const handleScreenshot = () => {
         if (threeCanvasRef.current) {
@@ -573,6 +576,20 @@ const AppContent: React.FC<AppContentProps> = ({ themeMode, onThemeToggle }) => 
                             >
                                 {!isMobile && gLang('resetCamera')}
                             </Button>
+                            <Tooltip title={isMobile ? gLang('banner.button') : undefined}>
+                                <Button
+                                    type="default"
+                                    icon={<PictureOutlined />}
+                                    onClick={() => setBannerOpen(true)}
+                                >
+                                    {!isMobile && gLang('banner.button')}
+                                </Button>
+                            </Tooltip>
+                            <BannerExportModal
+                                open={bannerOpen}
+                                onClose={() => setBannerOpen(false)}
+                                canvasRef={threeCanvasRef}
+                            />
                             <HappyProvider>
                                 <Tooltip title={isMobile ? gLang('screenshot') : undefined}>
                                     <Dropdown.Button

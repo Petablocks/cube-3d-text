@@ -8,7 +8,17 @@ import ThreeScene, { ThreeSceneHandle } from "./ThreeScene.tsx";
 import { GLTFExporter, OBJExporter, STLExporter, OrbitControls as OrbitControlsImpl } from "three-stdlib";
 import { useMessage } from "../contexts/MessageContext.tsx";
 import { useLanguage } from "../language.tsx";
-import { renderTitlePng } from "../utils/renderTitlePng";
+import { renderTitleCanvas, renderTitlePng } from "../utils/renderTitlePng";
+import { BannerBackground, BannerPreset, paintBackground, supersampleFactor } from "../utils/bannerPresets";
+
+export interface BannerRenderOptions {
+    preset: BannerPreset;
+    background: BannerBackground;
+    /** Extra space inside the safe area, as a fraction of its size (0–0.4). */
+    padding: number;
+    /** Use the current camera angle instead of the default straight-on view. */
+    useCurrentView: boolean;
+}
 
 // 相机配置常量
 const CAMERA_CONSTANTS = {
@@ -81,6 +91,7 @@ export interface ThreeCanvasHandle {
     resetCamera: () => void;
     exportScene: (format: "glb" | "gltf" | "obj" | "stl") => void;
     renderPng: (options: { revision: number; lineCount: number; width: number; height: number; padding: number }) => Promise<Blob>;
+    renderBanner: (options: BannerRenderOptions) => HTMLCanvasElement;
 }
 
 interface ThreeCanvasProps {
@@ -245,6 +256,35 @@ const CanvasTools: React.FC<CanvasToolsProps> = ({
                 await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
             }
             throw new Error(`Timed out waiting for title fonts, geometry, or textures (${lastState})`);
+        },
+        renderBanner: ({ preset, background, padding, useCurrentView }) => {
+            const group = sceneRef.current?.groupRef.current;
+            if (!group || group.children.length === 0) throw new Error(gLang('banner.empty'));
+            const { safeArea } = preset;
+            const scale = supersampleFactor(safeArea.width, safeArea.height, Math.min(gl.capabilities.maxTextureSize, 8192));
+            let view = {};
+            if (useCurrentView) {
+                const target = orbitRef.current?.target ?? new THREE.Vector3();
+                const fov = (camera as THREE.PerspectiveCamera).isPerspectiveCamera
+                    ? (camera as THREE.PerspectiveCamera).fov
+                    : 15;
+                view = { viewDirection: camera.position.clone().sub(target), fov };
+            }
+            const title = renderTitleCanvas(
+                gl, scene, group,
+                safeArea.width * scale, safeArea.height * scale,
+                Math.min(Math.max(padding, 0), 0.4), view,
+            );
+            const output = document.createElement("canvas");
+            output.width = preset.width;
+            output.height = preset.height;
+            const ctx = output.getContext("2d");
+            if (!ctx) throw new Error("Could not create a PNG canvas");
+            paintBackground(ctx, preset.width, preset.height, background);
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = "high";
+            ctx.drawImage(title, safeArea.x, safeArea.y, safeArea.width, safeArea.height);
+            return output;
         },
         takeScreenshot: () => {
             gl.render(scene, camera);
