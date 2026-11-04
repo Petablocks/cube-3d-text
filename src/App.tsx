@@ -32,14 +32,16 @@ import {
     MoonOutlined,
     SunOutlined,
     RobotOutlined,
-    CopyOutlined
+    CopyOutlined,
+    PictureOutlined
 } from "@ant-design/icons";
 import { HappyProvider } from '@ant-design/happy-work-theme';
 import ThreeCanvas, { ThreeCanvasHandle } from "./components/ThreeCanvas";
+import BannerExportModal from "./components/BannerExportModal";
 import "antd/dist/reset.css";
 import { CameraOptions, Text3DData, WorkspaceData } from "./types/text";
 import TextSettingsPanel from "./components/TextSettingsPanel.tsx";
-import { materialGradientLightBlue, materialGradientMediumYellow } from "./presetMaterials.ts";
+import { materialPetablocksPrimary, materialPetablocksTagline } from "./presetMaterials.ts";
 import { MessageProvider, useMessage } from "./contexts/MessageContext";
 import { useLanguage } from "./language.tsx";
 import SceneAndCameraSettingsPanel from "./components/SceneAndCameraSettingsPanel.tsx";
@@ -96,15 +98,15 @@ const AppContent: React.FC<AppContentProps> = ({ themeMode, onThemeToggle }) => 
         {
             content: gLang('defaultText1'),
             opts: {
-                size: 10,
+                size: 8,
                 depth: 5,
                 x: 0,
-                y: 8,
+                y: 6,
                 z: 0,
                 rotY: 0,
                 rotX: 0,
                 rotZ: 0,
-                materials: materialGradientMediumYellow,
+                materials: materialPetablocksPrimary,
                 outlineWidth: 0.4,
                 letterSpacing: 1.0,
                 spacingWidth: 0.2
@@ -115,17 +117,17 @@ const AppContent: React.FC<AppContentProps> = ({ themeMode, onThemeToggle }) => 
         {
             content: gLang('defaultText2'),
             opts: {
-                size: 5,
+                size: 3.2,
                 depth: 3,
                 x: 0,
-                y: -4,
+                y: -3,
                 z: 0,
                 rotY: 0,
                 rotX: 0,
                 rotZ: 0,
-                materials: materialGradientLightBlue,
-                outlineWidth: 0.5,
-                letterSpacing: 1.5,
+                materials: materialPetablocksTagline,
+                outlineWidth: 0.4,
+                letterSpacing: 1.0,
                 spacingWidth: 0.2
             },
             position: [0, 0, 0],
@@ -171,6 +173,7 @@ const AppContent: React.FC<AppContentProps> = ({ themeMode, onThemeToggle }) => 
     );
 
     const threeCanvasRef = useRef<ThreeCanvasHandle>(null);
+    const [bannerOpen, setBannerOpen] = useState(false);
 
     const handleScreenshot = () => {
         if (threeCanvasRef.current) {
@@ -280,7 +283,7 @@ const AppContent: React.FC<AppContentProps> = ({ themeMode, onThemeToggle }) => 
                     rotY: 0,
                     rotX: 0,
                     rotZ: 0,
-                    materials: materialGradientLightBlue,
+                    materials: materialPetablocksPrimary,
                     outlineWidth: 0.5,
                     letterSpacing: 1.5,
                     spacingWidth: 0.2
@@ -532,7 +535,7 @@ const AppContent: React.FC<AppContentProps> = ({ themeMode, onThemeToggle }) => 
                                                     rotY: 0,
                                                     rotX: 0,
                                                     rotZ: 0,
-                                                    materials: materialGradientLightBlue,
+                                                    materials: materialPetablocksPrimary,
                                                     outlineWidth: 0.5,
                                                     letterSpacing: 1.5,
                                                     spacingWidth: 0.2
@@ -573,6 +576,20 @@ const AppContent: React.FC<AppContentProps> = ({ themeMode, onThemeToggle }) => 
                             >
                                 {!isMobile && gLang('resetCamera')}
                             </Button>
+                            <Tooltip title={isMobile ? gLang('banner.button') : undefined}>
+                                <Button
+                                    type="default"
+                                    icon={<PictureOutlined />}
+                                    onClick={() => setBannerOpen(true)}
+                                >
+                                    {!isMobile && gLang('banner.button')}
+                                </Button>
+                            </Tooltip>
+                            <BannerExportModal
+                                open={bannerOpen}
+                                onClose={() => setBannerOpen(false)}
+                                canvasRef={threeCanvasRef}
+                            />
                             <HappyProvider>
                                 <Tooltip title={isMobile ? gLang('screenshot') : undefined}>
                                     <Dropdown.Button
@@ -621,7 +638,7 @@ const AppContent: React.FC<AppContentProps> = ({ themeMode, onThemeToggle }) => 
                                     onClick={onThemeToggle}
                                 />
                             </Tooltip>
-                            <a href="https://github.com/EaseCation/cube-3d-text" target="_blank" rel="noopener noreferrer">
+                            <a href="https://github.com/Petablocks/cube-3d-text" target="_blank" rel="noopener noreferrer">
                                 <Button type={'text'} style={{ padding: "0px 12px" }}>
                                     <Typography.Text type={'secondary'}>
                                         <Space size={'small'}>

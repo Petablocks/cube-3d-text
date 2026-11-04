@@ -1,5 +1,5 @@
 {
-  "name": "cube-3d-text",
+  "name": "petablocks-3d-text",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,11 +8,9 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "test": "tsx --test tests/*.test.ts",
-    "test:e2e": "yarn static-assets:pull && playwright test",
-    "check:static-assets": "node scripts/check-static-assets.mjs",
-    "static-assets:pull": "node scripts/static-assets/pull-fonts.mjs",
-    "static-assets:publish": "node scripts/static-assets/manage-fonts.mjs --source .static-assets/font --write --publish",
-    "preview": "vite preview"
+    "test:e2e": "playwright test",
+    "preview": "vite preview",
+    "convert-font": "tsx scripts/convert-font.ts"
   },
   "dependencies": {
     "@ant-design/happy-work-theme": "^2.0.0",

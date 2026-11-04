@@ -35,9 +35,10 @@ export function createAppThemeConfig(themeMode: ThemeMode): ThemeConfig {
     return {
         algorithm: isDarkMode ? antdTheme.darkAlgorithm : antdTheme.defaultAlgorithm,
         token: {
-            colorPrimary: isDarkMode ? "#d6dbe3" : "#333333",
-            colorTextLightSolid: isDarkMode ? "#11151b" : "#ffffff",
-            colorBgLayout: isDarkMode ? "#14181f" : "#f5f5f5",
+            // PETABLOCKS brand tokens (petablocks-brand/tokens/colors.json)
+            colorPrimary: isDarkMode ? "#0FCDF8" : "#111827",
+            colorTextLightSolid: isDarkMode ? "#0B0F19" : "#ffffff",
+            colorBgLayout: isDarkMode ? "#0B0F19" : "#f5f5f5",
         },
         components: {
             Button: {

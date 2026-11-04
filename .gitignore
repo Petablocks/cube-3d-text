@@ -12,7 +12,6 @@ dist
 playwright-report
 test-results
 dist-ssr
-.static-assets/
 *.local
 
 # Editor directories and files

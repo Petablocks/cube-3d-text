@@ -1,11 +1,21 @@
 import * as THREE from "three";
 
-function fittedCamera(group: THREE.Group, width: number, height: number, padding: number): THREE.PerspectiveCamera {
+export interface TitleViewOptions {
+  /** Direction from the title towards the camera. Defaults to the app's initial view. */
+  viewDirection?: THREE.Vector3;
+  /** Vertical field of view in degrees. Defaults to 75. */
+  fov?: number;
+}
+
+function fittedCamera(group: THREE.Group, width: number, height: number, padding: number, view: TitleViewOptions = {}): THREE.PerspectiveCamera {
   const box = new THREE.Box3().setFromObject(group);
   if (box.isEmpty()) throw new Error("The title has no visible geometry");
   const center = box.getCenter(new THREE.Vector3());
-  const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 10000);
-  const direction = new THREE.Vector3(0, -20, 50).normalize();
+  const fov = view.fov && view.fov > 1 ? view.fov : 75;
+  const camera = new THREE.PerspectiveCamera(fov, width / height, 0.1, 10000);
+  const direction = (view.viewDirection && view.viewDirection.lengthSq() > 0
+    ? view.viewDirection.clone()
+    : new THREE.Vector3(0, -20, 50)).normalize();
   camera.position.copy(center).add(direction);
   camera.lookAt(center);
   camera.updateMatrixWorld();
@@ -37,8 +47,25 @@ export async function renderTitlePng(
   width: number,
   height: number,
   padding: number,
+  view: TitleViewOptions = {},
 ): Promise<Blob> {
-  const camera = fittedCamera(group, width, height, padding);
+  const canvas = renderTitleCanvas(renderer, scene, group, width, height, padding, view);
+  return await new Promise<Blob>((resolve, reject) => {
+    canvas.toBlob((blob) => blob ? resolve(blob) : reject(new Error("PNG encoding failed")), "image/png");
+  });
+}
+
+/** Render the title, framed to fill width × height, onto a transparent canvas. */
+export function renderTitleCanvas(
+  renderer: THREE.WebGLRenderer,
+  scene: THREE.Scene,
+  group: THREE.Group,
+  width: number,
+  height: number,
+  padding: number,
+  view: TitleViewOptions = {},
+): HTMLCanvasElement {
+  const camera = fittedCamera(group, width, height, padding, view);
   const target = new THREE.WebGLRenderTarget(width, height, {
     format: THREE.RGBAFormat,
     type: THREE.UnsignedByteType,
@@ -75,9 +102,7 @@ export async function renderTitlePng(
     const context = canvas.getContext("2d");
     if (!context) throw new Error("Could not create a PNG canvas");
     context.putImageData(new ImageData(flipped, width, height), 0, 0);
-    return await new Promise<Blob>((resolve, reject) => {
-      canvas.toBlob((blob) => blob ? resolve(blob) : reject(new Error("PNG encoding failed")), "image/png");
-    });
+    return canvas;
   } finally {
     renderer.setRenderTarget(previousTarget);
     renderer.setViewport(previousViewport);
