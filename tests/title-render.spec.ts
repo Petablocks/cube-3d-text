@@ -1,34 +1,9 @@
 import { expect, test } from "@playwright/test";
-import { readFile } from "node:fs/promises";
-import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
 import type { Cube3DTextAPI, TitleRenderSpec } from "../src/utils/titleRender";
 
 type RenderWindow = Window & { cube3DText: Cube3DTextAPI };
 
-const manifest = JSON.parse(readFileSync(new URL("../cube-static-assets.json", import.meta.url), "utf8")) as {
-  baseUrl: string;
-  files: Record<string, { object: string }>;
-};
-
-const fontPaths = new Map(Object.entries(manifest.files).map(([source, record]) => [
-  `${manifest.baseUrl}/${record.object}`,
-  resolve(".static-assets/font", source.slice("/font/".length)),
-]));
-
-test.beforeEach(async ({ page }) => {
-  await page.route(`${manifest.baseUrl}/objects/*.json`, async (route) => {
-    const path = fontPaths.get(route.request().url());
-    if (!path) throw new Error(`Unknown font asset: ${route.request().url()}`);
-    await route.fulfill({
-      contentType: "application/json",
-      headers: { "Access-Control-Allow-Origin": "*" },
-      body: await readFile(path),
-    });
-  });
-});
-
-test("renders preset titles in three languages without changing saved work", async ({ page }, testInfo) => {
+test("renders preset titles with the bundled fonts without changing saved work", async ({ page }, testInfo) => {
   const savedWorkspace = JSON.stringify({ version: 1, data: { fontId: "Minecraft Ten", texts: [] } });
   await page.addInitScript((saved) => localStorage.setItem("workspace", saved), savedWorkspace);
   await page.goto("/?mode=render");
@@ -40,9 +15,9 @@ test("renders preset titles in three languages without changing saved work", asy
   expect(capabilities.materialPresets.find((preset) => preset.id === "gradient_blue")?.colors.length).toBeGreaterThan(0);
 
   const lines = [
-    { text: "我的世界", presetId: "grass", fontId: "Fusion Pixel 10px" },
-    { text: "BEDROCK", presetId: "gradient_purple", fontId: "Minecraft Ten" },
-    { text: "マインクラフト", presetId: "snow", fontId: "Fusion Pixel 10px" },
+    { text: "PETABLOCKS", presetId: "grass", fontId: "Minecraft Ten" },
+    { text: "NETWORK", presetId: "petablocks_tagline", fontId: "Chakra Petch Bold" },
+    { text: "SERVER", presetId: "snow", fontId: "Press Start 2P" },
   ];
   for (const [index, line] of lines.entries()) {
     const spec: TitleRenderSpec = { version: 1, width: 800, height: 400, lines: [line] };

@@ -55,8 +55,8 @@ export const TITLE_DEFAULTS = {
   width: 1200,
   height: 600,
   padding: 0.08,
-  fontId: "Fusion Pixel 10px",
-  presetId: "gradient_blue",
+  fontId: "Minecraft Ten",
+  presetId: "petablocks_primary",
 } as const;
 
 function objectAt(value: unknown, path: string): Record<string, unknown> {

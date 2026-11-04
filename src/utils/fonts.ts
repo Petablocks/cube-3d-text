@@ -1,30 +1,17 @@
-import manifest from '../../cube-static-assets.json';
-
-const fontUrl = (filename: keyof typeof manifest.files): string =>
-    `${manifest.baseUrl}/${manifest.files[filename].object}`;
-
-// PETABLOCKS brand fonts, hosted with the site itself (public/fonts).
+// Built-in fonts are bundled with the site under public/fonts, so the tool
+// works on any static host (e.g. Cloudflare Pages) with no external CDN.
+// Add more with: npx tsx scripts/convert-font.ts <font.ttf> public/fonts/<Name>.json
 const localFontUrl = (filename: string): string =>
     `${import.meta.env.BASE_URL}fonts/${filename}`;
 
 export const builtinFontsMap: { [name: string]: string } = {
+    "Minecraft Ten": localFontUrl("Minecraft_Ten_Regular.json"),
     "Chakra Petch Bold": localFontUrl("Chakra_Petch_Bold.json"),
     "Press Start 2P": localFontUrl("Press_Start_2P_Regular.json"),
-    "汉仪力量黑(简)": fontUrl("/font/HYLiLiangHeiJ_Regular.json"),
-    "锐字太空历险像素简": fontUrl("/font/REEJI-TaikoMagicGB-Flash_Regular.json"),
-    "Minecraft Ten": fontUrl("/font/Minecraft_Ten_Regular.json"),
-    "Fusion Pixel 8px": fontUrl("/font/Fusion_Pixel_8px_Proportional_zh_hans_Regular.json"),
-    "Fusion Pixel 10px": fontUrl("/font/Fusion_Pixel_10px_Proportional_zh_hans_Regular.json"),
-    "得意黑": fontUrl("/font/Smiley_Sans_Oblique_Regular.json"),
-    "Unifont ASCII": fontUrl("/font/Unifont_ASCII_Regular.json")
+    "Unifont ASCII": localFontUrl("Unifont_ASCII_Regular.json"),
 };
 
-export const builtinFontsTextureYOffset: { [name: string]: number } = {
-    "汉仪力量黑(简)": 0,
-    "锐字太空历险像素简": 0,
-    "Fusion Pixel 8px": 0,
-    "Fusion Pixel 10px": 0,
-}
+export const builtinFontsTextureYOffset: { [name: string]: number } = {}
 
 export interface FontLicenceInfo {
     tagColor: string;
@@ -33,6 +20,11 @@ export interface FontLicenceInfo {
 }
 
 export const builtinFontsLicence: { [name: string]: FontLicenceInfo } = {
+    "Minecraft Ten": {
+        tagColor: "success",
+        tag: "fontLicence.sil",
+        tagTooltip: "fontLicence.minecraftTenTooltip",
+    },
     "Chakra Petch Bold": {
         tagColor: "success",
         tag: "fontLicence.sil",
@@ -42,36 +34,6 @@ export const builtinFontsLicence: { [name: string]: FontLicenceInfo } = {
         tagColor: "success",
         tag: "fontLicence.sil",
         tagTooltip: "fontLicence.pressStartTooltip",
-    },
-    "汉仪力量黑(简)": {
-        tagColor: "orange",
-        tag: "fontLicence.netease",
-        tagTooltip: "fontLicence.hanyiTooltip",
-    },
-    "锐字太空历险像素简": {
-        tagColor: "orange",
-        tag: "fontLicence.netease",
-        tagTooltip: "fontLicence.ruiziTooltip",
-    },
-    "Minecraft Ten": {
-        tagColor: "success",
-        tag: "fontLicence.sil",
-        tagTooltip: "fontLicence.minecraftTenTooltip",
-    },
-    "Fusion Pixel 8px": {
-        tagColor: "success",
-        tag: "fontLicence.sil",
-        tagTooltip: "fontLicence.fusionPixelTooltip",
-    },
-    "Fusion Pixel 10px": {
-        tagColor: "success",
-        tag: "fontLicence.sil",
-        tagTooltip: "fontLicence.fusionPixelTooltip",
-    },
-    "得意黑": {
-        tagColor: "success",
-        tag: "fontLicence.sil",
-        tagTooltip: "fontLicence.smileyTooltip",
     },
     "Unifont ASCII": {
         tagColor: "success",
