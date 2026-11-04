@@ -39,7 +39,7 @@ import ThreeCanvas, { ThreeCanvasHandle } from "./components/ThreeCanvas";
 import "antd/dist/reset.css";
 import { CameraOptions, Text3DData, WorkspaceData } from "./types/text";
 import TextSettingsPanel from "./components/TextSettingsPanel.tsx";
-import { materialGradientLightBlue, materialGradientMediumYellow } from "./presetMaterials.ts";
+import { materialPetablocksPrimary, materialPetablocksTagline } from "./presetMaterials.ts";
 import { MessageProvider, useMessage } from "./contexts/MessageContext";
 import { useLanguage } from "./language.tsx";
 import SceneAndCameraSettingsPanel from "./components/SceneAndCameraSettingsPanel.tsx";
@@ -104,7 +104,7 @@ const AppContent: React.FC<AppContentProps> = ({ themeMode, onThemeToggle }) => 
                 rotY: 0,
                 rotX: 0,
                 rotZ: 0,
-                materials: materialGradientMediumYellow,
+                materials: materialPetablocksPrimary,
                 outlineWidth: 0.4,
                 letterSpacing: 1.0,
                 spacingWidth: 0.2
@@ -123,7 +123,7 @@ const AppContent: React.FC<AppContentProps> = ({ themeMode, onThemeToggle }) => 
                 rotY: 0,
                 rotX: 0,
                 rotZ: 0,
-                materials: materialGradientLightBlue,
+                materials: materialPetablocksTagline,
                 outlineWidth: 0.5,
                 letterSpacing: 1.5,
                 spacingWidth: 0.2
@@ -280,7 +280,7 @@ const AppContent: React.FC<AppContentProps> = ({ themeMode, onThemeToggle }) => 
                     rotY: 0,
                     rotX: 0,
                     rotZ: 0,
-                    materials: materialGradientLightBlue,
+                    materials: materialPetablocksPrimary,
                     outlineWidth: 0.5,
                     letterSpacing: 1.5,
                     spacingWidth: 0.2
@@ -532,7 +532,7 @@ const AppContent: React.FC<AppContentProps> = ({ themeMode, onThemeToggle }) => 
                                                     rotY: 0,
                                                     rotX: 0,
                                                     rotZ: 0,
-                                                    materials: materialGradientLightBlue,
+                                                    materials: materialPetablocksPrimary,
                                                     outlineWidth: 0.5,
                                                     letterSpacing: 1.5,
                                                     spacingWidth: 0.2

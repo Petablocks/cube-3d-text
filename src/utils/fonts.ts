@@ -3,7 +3,13 @@ import manifest from '../../cube-static-assets.json';
 const fontUrl = (filename: keyof typeof manifest.files): string =>
     `${manifest.baseUrl}/${manifest.files[filename].object}`;
 
+// PETABLOCKS brand fonts, hosted with the site itself (public/fonts).
+const localFontUrl = (filename: string): string =>
+    `${import.meta.env.BASE_URL}fonts/${filename}`;
+
 export const builtinFontsMap: { [name: string]: string } = {
+    "Chakra Petch Bold": localFontUrl("Chakra_Petch_Bold.json"),
+    "Press Start 2P": localFontUrl("Press_Start_2P_Regular.json"),
     "汉仪力量黑(简)": fontUrl("/font/HYLiLiangHeiJ_Regular.json"),
     "锐字太空历险像素简": fontUrl("/font/REEJI-TaikoMagicGB-Flash_Regular.json"),
     "Minecraft Ten": fontUrl("/font/Minecraft_Ten_Regular.json"),
@@ -27,6 +33,16 @@ export interface FontLicenceInfo {
 }
 
 export const builtinFontsLicence: { [name: string]: FontLicenceInfo } = {
+    "Chakra Petch Bold": {
+        tagColor: "success",
+        tag: "fontLicence.sil",
+        tagTooltip: "fontLicence.chakraPetchTooltip",
+    },
+    "Press Start 2P": {
+        tagColor: "success",
+        tag: "fontLicence.sil",
+        tagTooltip: "fontLicence.pressStartTooltip",
+    },
     "汉仪力量黑(简)": {
         tagColor: "orange",
         tag: "fontLicence.netease",
