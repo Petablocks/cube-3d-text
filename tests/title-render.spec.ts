@@ -18,6 +18,8 @@ test("renders preset titles with the bundled fonts without changing saved work",
     { text: "PETABLOCKS", presetId: "grass", fontId: "Minecraft Ten" },
     { text: "NETWORK", presetId: "petablocks_tagline", fontId: "Chakra Petch Bold" },
     { text: "SERVER", presetId: "snow", fontId: "Press Start 2P" },
+    { text: "Modpacks", presetId: "snow", fontId: "Work Sans SemiBold" },
+    { text: "Survival", presetId: "grass", fontId: "Work Sans Bold" },
   ];
   for (const [index, line] of lines.entries()) {
     const spec: TitleRenderSpec = { version: 1, width: 800, height: 400, lines: [line] };

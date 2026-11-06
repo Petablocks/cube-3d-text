@@ -7,6 +7,8 @@ const localFontUrl = (filename: string): string =>
 export const builtinFontsMap: { [name: string]: string } = {
     "Minecraft Ten": localFontUrl("Minecraft_Ten_Regular.json"),
     "Chakra Petch Bold": localFontUrl("Chakra_Petch_Bold.json"),
+    "Work Sans SemiBold": localFontUrl("Work_Sans_SemiBold.json"),
+    "Work Sans Bold": localFontUrl("Work_Sans_Bold.json"),
     "Press Start 2P": localFontUrl("Press_Start_2P_Regular.json"),
     "Unifont ASCII": localFontUrl("Unifont_ASCII_Regular.json"),
 };
@@ -29,6 +31,16 @@ export const builtinFontsLicence: { [name: string]: FontLicenceInfo } = {
         tagColor: "success",
         tag: "fontLicence.sil",
         tagTooltip: "fontLicence.chakraPetchTooltip",
+    },
+    "Work Sans SemiBold": {
+        tagColor: "success",
+        tag: "fontLicence.sil",
+        tagTooltip: "fontLicence.workSansTooltip",
+    },
+    "Work Sans Bold": {
+        tagColor: "success",
+        tag: "fontLicence.sil",
+        tagTooltip: "fontLicence.workSansTooltip",
     },
     "Press Start 2P": {
         tagColor: "success",

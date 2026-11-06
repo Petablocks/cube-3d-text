@@ -15,7 +15,7 @@ It is a fork of [EaseCation/cube-3d-text](https://github.com/EaseCation/cube-3d-
   - **Tagline:** Neon Magenta `#E040FB` to Network Purple `#A824FF`, with a Deep Nether Purple extrusion.
   - **Mint:** the primary gradient reversed, for secondary headings.
   - **Light:** neutral light text for dark banners.
-- **Brand fonts.** Minecraft Ten, Chakra Petch Bold, Press Start 2P and Unifont ASCII are all SIL OFL fonts, and they're bundled in `public/fonts`. You can upload any other TTF from the font picker.
+- **Brand fonts.** Minecraft Ten, Chakra Petch Bold, Work Sans (SemiBold and Bold), Press Start 2P and Unifont ASCII are all SIL OFL fonts, and they're bundled in `public/fonts`. You can upload any other TTF from the font picker.
 - **Banner export.** The **Banner** button exports PNGs at the sizes in the brand marketing guide. It fits the text into each size's safe area automatically:
 
   | Preset | Size | Safe area |
