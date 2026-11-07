@@ -123,6 +123,8 @@ export const languageConfig: Readonly<LanguageConfig> = {
             unsupportedChars: "当前字体不支持字符：{chars}，已使用方块占位，请更换字体",
         },
         fontLicence: {
+            free: "免费",
+            aldoTooltip: "Aldo the Apache © AJ Paglia<br>作者在 <a href=\"https://www.dafont.com/aldo-the-apache.font\" target=\"_blank\">dafont.com</a> 上将此字体标注为 100% 免费。",
             netease: "限制商用",
             hanyiTooltip: "商用限制（由于网易已购买商用授权并用于《我的世界》游戏，您可在网易《我的世界》游戏的内部使用）<br>个人用途请遵循<a href=\"https://www.hanyi.com.cn/faq-doc-1\" target=\"_blank\">《汉仪字库个人非商用须知》</a><br>商用请购买商用授权 <a href=\"https://www.hanyi.com.cn/license\" target=\"_blank\">https://www.hanyi.com.cn/license</a>",
             ruiziTooltip: "商用限制（由于网易已购买商用授权并用于《我的世界》游戏，您可在网易《我的世界》游戏的内部使用）<br>个人用途请遵循<a href=\"http://www.reeji.com/notice.html\" target=\"_blank\">《锐字潮牌字库个人学习版用字须知》</a><br>商用请购买商用授权 <a href=\"http://www.reeji.com/license.html\" target=\"_blank\">http://www.reeji.com/license.html</a>",
@@ -132,6 +134,7 @@ export const languageConfig: Readonly<LanguageConfig> = {
             smileyTooltip: "Copyright (c) 2022--2024, atelierAnchor <https://atelier-anchor.com><br>该字体依据 <a href=\"https://github.com/atelier-anchor/smiley-sans/blob/main/LICENSE\" target=\"_blank\"> SIL 开放字体许可证（SIL Open Font License，版本 1.1）</a> 授权使用。",
             unifontTooltip: "Copyright (c) 1998--2025, GNU <https://unifoundry.com/unifont/index.html><br>该字体依据 <a href=\"https://unifoundry.com/OFL-1.1.txt\" target=\"_blank\"> SIL 开放字体许可证（SIL Open Font License，版本 1.1）</a> 授权使用。",
             chakraPetchTooltip: "Chakra Petch © 2018 The Chakra Petch Project Authors<br>This font is licensed under the SIL Open Font License, Version 1.1. Full license text available at <a href=\"https://openfontlicense.org\" target=\"_blank\">https://openfontlicense.org</a>",
+            workSansTooltip: "Work Sans © 2019 The Work Sans Project Authors<br>This font is licensed under the SIL Open Font License, Version 1.1. Full license text available at <a href=\"https://openfontlicense.org\" target=\"_blank\">https://openfontlicense.org</a>",
             pressStartTooltip: "Press Start 2P © 2012 The Press Start 2P Project Authors<br>This font is licensed under the SIL Open Font License, Version 1.1. Full license text available at <a href=\"https://openfontlicense.org\" target=\"_blank\">https://openfontlicense.org</a>"
         },
         overlay: {
@@ -281,6 +284,8 @@ export const languageConfig: Readonly<LanguageConfig> = {
             unsupportedChars: "This font does not support: {chars}. Placeholders are shown; please choose another font",
         },
         fontLicence: {
+            free: "Free",
+            aldoTooltip: "Aldo the Apache © AJ Paglia<br>Listed by the author as 100% free on <a href=\"https://www.dafont.com/aldo-the-apache.font\" target=\"_blank\">dafont.com</a>.",
             netease: "Limitation",
             hanyiTooltip: "Commercial use is restricted (NetEase has purchased commercial authorization for use in Minecraft games, you can use it within NetEase Minecraft games)<br>For personal use, please follow <a href=\"https://www.hanyi.com.cn/faq-doc-1\" target=\"_blank\">HanYi Font Library Personal Non-commercial Notice</a><br>For commercial use, please purchase a commercial license at <a href=\"https://www.hanyi.com.cn/license\" target=\"_blank\">https://www.hanyi.com.cn/license</a>",
             ruiziTooltip: "Commercial use is restricted (NetEase has purchased commercial authorization for use in Minecraft games, you can use it within NetEase Minecraft games)<br>For personal use, please follow <a href=\"http://www.reeji.com/notice.html\" target=\"_blank\">Reeji Font Library Personal Learning Version Usage Guidelines</a><br>For commercial use, please purchase a commercial license at <a href=\"http://www.reeji.com/license.html\" target=\"_blank\">http://www.reeji.com/license.html</a>",
@@ -290,6 +295,7 @@ export const languageConfig: Readonly<LanguageConfig> = {
             smileyTooltip: "Smiley Sans © 2022--2024, atelierAnchor <https://atelier-anchor.com><br>This font is licensed under the SIL Open Font License, Version 1.1. Full license text available at <a href=\"https://github.com/atelier-anchor/smiley-sans/blob/main/LICENSE\" target=\"_blank\">https://github.com/atelier-anchor/smiley-sans/blob/main/LICENSE</a>",
             unifontTooltip: "Unifont © 1998--2025, GNU <https://unifoundry.com/unifont/index.html><br>This font is licensed under the SIL Open Font License, Version 1.1. Full license text available at <a href=\"https://unifoundry.com/OFL-1.1.txt\" target=\"_blank\">https://unifoundry.com/OFL-1.1.txt</a>",
             chakraPetchTooltip: "Chakra Petch © 2018 The Chakra Petch Project Authors<br>This font is licensed under the SIL Open Font License, Version 1.1. Full license text available at <a href=\"https://openfontlicense.org\" target=\"_blank\">https://openfontlicense.org</a>",
+            workSansTooltip: "Work Sans © 2019 The Work Sans Project Authors<br>This font is licensed under the SIL Open Font License, Version 1.1. Full license text available at <a href=\"https://openfontlicense.org\" target=\"_blank\">https://openfontlicense.org</a>",
             pressStartTooltip: "Press Start 2P © 2012 The Press Start 2P Project Authors<br>This font is licensed under the SIL Open Font License, Version 1.1. Full license text available at <a href=\"https://openfontlicense.org\" target=\"_blank\">https://openfontlicense.org</a>"
         },
         overlay: {
@@ -439,6 +445,8 @@ export const languageConfig: Readonly<LanguageConfig> = {
             unsupportedChars: "このフォントは次の文字に対応していません：{chars}。別のフォントを選択してください"
         },
         fontLicence: {
+            free: "フリー",
+            aldoTooltip: "Aldo the Apache © AJ Paglia<br>作者により <a href=\"https://www.dafont.com/aldo-the-apache.font\" target=\"_blank\">dafont.com</a> で 100% フリーとして公開されています。",
             netease: "制限",
             hanyiTooltip: "商用利用は制限されています（NetEaseはMinecraftゲームでの使用のための商用許可を購入しており、NetEase Minecraftゲーム内での使用が可能です）<br>個人利用の場合は<a href=\"https://www.hanyi.com.cn/faq-doc-1\" target=\"_blank\">漢儀フォントライブラリ個人非商用通知</a>に従ってください<br>商用利用の場合は、<a href=\"https://www.hanyi.com.cn/license\" target=\"_blank\">https://www.hanyi.com.cn/license</a>で商用ライセンスを購入してください",
             ruiziTooltip: "商用利用は制限されています（NetEaseはMinecraftゲームでの使用のための商用許可を購入しており、NetEase Minecraftゲーム内での使用が可能です）<br>個人利用の場合は<a href=\"http://www.reeji.com/notice.html\" target=\"_blank\">锐字フォントライブラリ個人学習版利用ガイドライン</a>に従ってください<br>商用利用の場合は、<a href=\"http://www.reeji.com/license.html\" target=\"_blank\">http://www.reeji.com/license.html</a>で商用ライセンスを購入してください",
@@ -448,6 +456,7 @@ export const languageConfig: Readonly<LanguageConfig> = {
             smileyTooltip: "Smiley Sans © 2022--2024, atelierAnchor <https://atelier-anchor.com><br>このフォントは SIL Open Font License、バージョン 1.1 でライセンスされています。完全なライセンステキストは<a href=\"https://github.com/atelier-anchor/smiley-sans/blob/main/LICENSE\" target=\"_blank\">こちら</a>でご覧いただけます。",
             unifontTooltip: "Unifont © 1998--2025, GNU <https://unifoundry.com/unifont/index.html><br>このフォントは SIL Open Font License、バージョン 1.1 でライセンスされています。完全なライセンステキストは<a href=\"https://unifoundry.com/OFL-1.1.txt\" target=\"_blank\">こちら</a>でご覧いただけます。",
             chakraPetchTooltip: "Chakra Petch © 2018 The Chakra Petch Project Authors<br>This font is licensed under the SIL Open Font License, Version 1.1. Full license text available at <a href=\"https://openfontlicense.org\" target=\"_blank\">https://openfontlicense.org</a>",
+            workSansTooltip: "Work Sans © 2019 The Work Sans Project Authors<br>This font is licensed under the SIL Open Font License, Version 1.1. Full license text available at <a href=\"https://openfontlicense.org\" target=\"_blank\">https://openfontlicense.org</a>",
             pressStartTooltip: "Press Start 2P © 2012 The Press Start 2P Project Authors<br>This font is licensed under the SIL Open Font License, Version 1.1. Full license text available at <a href=\"https://openfontlicense.org\" target=\"_blank\">https://openfontlicense.org</a>"
         },
         overlay: {
