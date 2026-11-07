@@ -20,6 +20,7 @@ test("renders preset titles with the bundled fonts without changing saved work",
     { text: "SERVER", presetId: "snow", fontId: "Press Start 2P" },
     { text: "Modpacks", presetId: "snow", fontId: "Work Sans SemiBold" },
     { text: "Survival", presetId: "grass", fontId: "Work Sans Bold" },
+    { text: "APACHE", presetId: "petablocks_tagline", fontId: "Aldo the Apache" },
   ];
   for (const [index, line] of lines.entries()) {
     const spec: TitleRenderSpec = { version: 1, width: 800, height: 400, lines: [line] };
